@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<body>
+<p id="demo"></p>
+<script>
+// set variables
+var today = new Date();
+var mstoday = today.getTime();
+var oneday = 86400000;
+var mspastthirty = mstoday + 30 * oneday;
+var pastthirty = new Date(mspastthirty);
+// 
+document.getElementById("demo").innerHTML = pastthirty;
+
+</script>
+</body>
+</html>
