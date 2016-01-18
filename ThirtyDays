@@ -1,0 +1,42 @@
+<html>
+<body>
+
+<p id="ThirtyDays"></p>
+
+// Finds the next 1st of the month which is at least MinDays away from today.
+// Finds the next 1st of the month after this date.
+
+<script>
+// set variables
+	var Today = new Date(); // YYYY, MM, DD: MM = 0 for Jan
+    var MinDays = 28; // How many days is worth setting temporary access for?
+	var ms1Day = 86400000; // milliseconds in one day
+        
+// Forward Today's date by MinDays
+    var msToday = Today.getTime();
+	var msFwd = msToday + MinDays * ms1Day;        
+	var Fwd = new Date(msFwd), y = Fwd.getFullYear(), m = Fwd.getMonth();
+
+// Find the 1st of the month of the forwarded date
+	var FirstMonth = new Date (y, m, 1);
+    var msFirstMonth = FirstMonth.getTime();
+    
+// check if the difference between that date and today > MinDays
+	var Dist1 = (msFirstMonth - msToday) / ms1Day;
+	if (Dist1 <= MinDays) {
+    	var m = m + 1;
+		var FirstMonth = new Date (y, m, 1);
+    }
+
+// Update variable values
+    var msFirstMonth = FirstMonth.getTime();
+    var Dist2 = (msFirstMonth - msToday) / ms1Day;
+    var SecondMonth = new Date (y, m+1, 1);
+    
+// test
+    document.getElementById("ThirtyDays").innerHTML = Dist2 - Dist1;
+    //(msFirstMonth - msToday) / msOneDay;
+    
+</script>
+</body>
+</html>
